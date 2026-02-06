@@ -1,131 +1,46 @@
 <html>
 <head>
-  <title>Valentine Surprise 💖</title>
+  <title>Valentine Surprise 💘</title>
   <style>
     body {
-      background: #ffe6eb;
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       text-align: center;
-      overflow: hidden;
+      background: #ffe6eb;
     }
     .popup {
+      display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: white;
       padding: 25px;
-      border-radius: 20px;
-      width: 330px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.3);
-      z-index: 10;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
     }
     button {
-      margin: 8px;
-      padding: 10px 18px;
-      border-radius: 20px;
+      background: #ff4d6d;
+      color: white;
       border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
       cursor: pointer;
-      font-size: 14px;
-    }
-    .yes { background: #ff4d6d; color: white; }
-    .no { background: #ddd; }
-
-    img {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 10px;
-    }
-
-    .heart {
-      position: fixed;
-      color: #ff4d6d;
-      font-size: 20px;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      0% { bottom: -10px; opacity: 0; }
-      50% { opacity: 1; }
-      100% { bottom: 100%; opacity: 0; }
     }
   </style>
 </head>
+<body onload="openPopup()">
 
-<body onload="initValentine()">
+  <div class="popup" id="valPopup">
+    <h2>💖 Valentine Surprise 💖</h2>
+    <p>Kya tum mere saath Valentine’s Week ke saare special days spend karoge? 😌</p>
+    <button onclick="alert('Yay! 💕')">Yes 💘</button>
+  </div>
 
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<div class="popup" id="popup"></div>
-
-<script>
-  const yourName = "Amit";
-  const theirName = "Banashree";
-  const photoURL = "https://i.imgur.com/8RKXAIV.jpg"; // change photo if you want
-
-  const days = [
-    { date: 7, title: "🌹 Rose Day", msg: "Yeh rose meri feelings ka symbol hai 💖" },
-    { date: 8, title: "💌 Propose Day", msg: "Kya tum meri Valentine banogi? 😌", proposal: true },
-    { date: 9, title: "🍫 Chocolate Day", msg: "Tum meri life ki chocolate ho 😍" },
-    { date: 10, title: "🧸 Teddy Day", msg: "Main tumhara forever teddy 🤍" },
-    { date: 11, title: "🤝 Promise Day", msg: "Promise: always there for you 💫" },
-    { date: 12, title: "🤗 Hug Day", msg: "Iss hug me meri saari care 🤍" },
-    { date: 14, title: "❤️ Valentine’s Day", msg: "Happy Valentine’s Day 💖 Tum meri ho 😌" }
-  ];
-
-  function initValentine() {
-    startHearts();
-    const today = new Date().getDate();
-    const day = days.find(d => d.date === today) || days[0];
-    showPopup(day);
-  }
-
-  function showPopup(day) {
-    let html = `
-      <h2>${day.title}</h2>
-      <p>${theirName}, ${day.msg}</p>
-      <img src="${photoURL}">
-    `;
-
-    if (day.proposal) {
-      html += `
-        <button class="yes" onclick="yesClicked()">Yes 💖</button>
-        <button class="no" onclick="noClicked()">No 🙈</button>
-      `;
-    } else {
-      html += `<p>💝 From ${yourName}</p>`;
+  <script>
+    function openPopup() {
+      document.getElementById("valPopup").style.display = "block";
     }
-
-    document.getElementById("popup").innerHTML = html;
-  }
-
-  function yesClicked() {
-    document.getElementById("popup").innerHTML = `
-      <h2>😍 YAYYY!</h2>
-      <p>You made me the happiest 💖</p>
-      <p>Forever Valentine 💍</p>
-    `;
-  }
-
-  function noClicked() {
-    alert("Arre ek baar phir soch lo 😜💘");
-  }
-
-  function startHearts() {
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 300);
-  }
-</script>
+  </script>
 
 </body>
 </html>
-✅ STEP 2: B
